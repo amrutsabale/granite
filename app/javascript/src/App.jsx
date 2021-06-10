@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+
 const App = () => {
   useEffect(() => {
     /*eslint no-undef: "off"*/
-    initializeLogger();
+    initializeLogger;
     logger.info("Log from js-logger");
   }, []);
 
