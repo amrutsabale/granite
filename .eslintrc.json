@@ -28,10 +28,9 @@
       "no-unused-vars": 0,
       "no-undef": 0,
       "indent": ["error", 2],
-      "arrow-parens": ["error", "as-needed"],
       "semi": ["error", "always"],
       "no-console": "error",
-      "react/prop-types": 0,
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "react/prop-types": 0
     }
   }
