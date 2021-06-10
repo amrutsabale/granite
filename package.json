@@ -6,12 +6,38 @@
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.4.0",
+    "axios": "^0.21.1",
+    "babel-plugin-js-logger": "^1.0.17",
+    "js-logger": "^1.6.1",
+    "react-router-dom": "^5.2.0",
     "tailwindcss": "1.9.6",
     "webpack": "^4.46.0",
     "webpack-cli": "^3.3.12"
   },
   "version": "0.1.0",
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-json": "^3.0.0",
+    "eslint-plugin-react": "^7.24.0",
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.3.1",
     "webpack-dev-server": "^3.11.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "app/**/*.{html,md,js,jsx,json,yml}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "scripts": {
+    "prepare": "husky install"
   }
 }
