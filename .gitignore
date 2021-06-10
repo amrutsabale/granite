@@ -97,3 +97,9 @@ yarn-debug.log*
 .yarnrc
 yarn-1.22.5.cjs
 yarn-1.22.5.js
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
