@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import React, { useState } from "react";
 import Container from "components/Container";
 import TaskForm from "components/Tasks/Form/TaskForm";
@@ -11,14 +10,10 @@ const CreateTask = ({ history }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await tasksApi.create({ task: { title } });
-      logger.info("response", response);
+      await tasksApi.create({ task: { title } });
       setLoading(false);
       history.push("/dashboard");
     } catch (error) {
-      console.log(error);
-      logger.error("error");
-
       logger.error(error);
       setLoading(false);
     }

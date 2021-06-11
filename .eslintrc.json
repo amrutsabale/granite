@@ -27,7 +27,6 @@
     "rules": {
       "no-unused-vars": 0,
       "no-undef": 0,
-      "indent": ["error", 2],
       "semi": ["error", "always"],
       "no-console": "error",
       "import/prefer-default-export": "off",
