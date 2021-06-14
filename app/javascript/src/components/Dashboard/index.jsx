@@ -53,7 +53,7 @@ const Dashboard = ({ history }) => {
   if (!either(isNil, isEmpty)(tasks)) {
     return (
       <Container>
-        <ListTasks data={tasks} showTask={showTask} />
+        <ListTasks data={tasks} showTask={showTask} updateTask={updateTask} />
       </Container>
     );
   }

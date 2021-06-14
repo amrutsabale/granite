@@ -11,7 +11,11 @@ const Table = ({ data, destroyTask, updateTask, showTask }) => {
           <div className="overflow-hidden border-b border-gray-200 shadow md:custom-box-shadow">
             <table className="min-w-full divide-y divide-gray-200">
               <TableHeader />
-              <TableRow data={data} showTask={showTask} />
+              <TableRow
+                data={data}
+                showTask={showTask}
+                updateTask={updateTask}
+              />
             </table>
           </div>
         </div>

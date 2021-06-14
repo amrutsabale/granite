@@ -6,6 +6,8 @@ const show = (slug) => axios.get(`/tasks/${slug}`);
 
 const create = (payload) => axios.post("/tasks/", payload);
 
-const tasksApi = { list, create, show };
+const update = ({ slug, payload }) => axios.put(`/tasks/${slug}`, payload);
+
+const tasksApi = { list, create, show, update };
 
 export default tasksApi;

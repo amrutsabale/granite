@@ -31,8 +31,8 @@ const TableRow = ({ data, destroyTask, updateTask, showTask }) => {
             leading-5 text-right cursor-pointer"
           >
             <a
-              className="text-bb-purple text-opacity-50
-              hover:text-opacity-100"
+              className="text-indigo-600 hover:text-indigo-900"
+              onClick={() => updateTask(rowData.slug)}
             >
               Edit
             </a>
