@@ -15,6 +15,7 @@ const Table = ({ data, destroyTask, updateTask, showTask }) => {
                 data={data}
                 showTask={showTask}
                 updateTask={updateTask}
+                destroyTask={destroyTask}
               />
             </table>
           </div>

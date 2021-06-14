@@ -41,7 +41,13 @@ const TableRow = ({ data, destroyTask, updateTask, showTask }) => {
             className="px-6 py-4 text-sm font-medium
             leading-5 text-right cursor-pointer"
           >
-            <a className=" hover:text-bb-red">Delete</a>
+            <a
+              className="text-indigo-600
+               hover:text-indigo-900"
+              onClick={() => destroyTask(rowData.slug)}
+            >
+              Delete
+            </a>
           </td>
         </tr>
       ))}
