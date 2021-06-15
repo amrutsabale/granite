@@ -6,6 +6,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true, on: :create
+  has_secure_token :authentication_token
 
   validates :email, presence: true,
                     uniqueness: true,
