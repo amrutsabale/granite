@@ -3,6 +3,7 @@ class Task < ApplicationRecord
   validates :slug, uniqueness: true
   before_create :set_slug
   validate :slug_not_changed
+  belongs_to :user
 
   private
 
