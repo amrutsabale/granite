@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :load_task, only: [:show]
+  before_action :load_task, only: %i[show update destroy]
 
   def index
    tasks = Task.all
@@ -20,6 +20,23 @@ class TasksController < ApplicationController
     end
   rescue ActiveRecord::RecordNotUnique => e
     render status: :unprocessable_entity, json: { errors: e.message }
+  end
+
+  def update
+    if @task.update(task_params)
+      render status: :ok, json: { notice: 'Successfully updated task.' }
+    else
+      render status: :unprocessable_entity, json: { errors: @task.errors.full_messages }
+    end
+  end
+
+  def destroy
+    if @task.destroy
+      render status: :ok, json: { notice: 'Successfully deleted task.' }
+    else
+      render status: :unprocessable_entity, json: { errors:
+      @task.errors.full_messages }
+    end
   end
 
   private

@@ -31,8 +31,8 @@ const TableRow = ({ data, destroyTask, updateTask, showTask }) => {
             leading-5 text-right cursor-pointer"
           >
             <a
-              className="text-bb-purple text-opacity-50
-              hover:text-opacity-100"
+              className="text-indigo-600 hover:text-indigo-900"
+              onClick={() => updateTask(rowData.slug)}
             >
               Edit
             </a>
@@ -41,7 +41,13 @@ const TableRow = ({ data, destroyTask, updateTask, showTask }) => {
             className="px-6 py-4 text-sm font-medium
             leading-5 text-right cursor-pointer"
           >
-            <a className=" hover:text-bb-red">Delete</a>
+            <a
+              className="text-indigo-600
+               hover:text-indigo-900"
+              onClick={() => destroyTask(rowData.slug)}
+            >
+              Delete
+            </a>
           </td>
         </tr>
       ))}
