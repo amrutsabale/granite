@@ -15,6 +15,7 @@ const ShowTask = () => {
   const fetchTaskDetails = async () => {
     try {
       const response = await tasksApi.show(slug);
+      logger.info(response.data);
       setTaskDetails(response.data.task);
       setAssignedUser(response.data.assigned_user);
       setTaskCreator(response.data.task_creator);

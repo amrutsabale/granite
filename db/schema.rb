@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_065001) do
+ActiveRecord::Schema.define(version: 2021_06_15_110515) do
 
   create_table "tasks", force: :cascade do |t|
     t.text "title", null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2021_06_15_065001) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "slug", null: false
     t.integer "user_id"
+    t.integer "creator_id"
     t.index ["slug"], name: "index_tasks_on_slug", unique: true
   end
 

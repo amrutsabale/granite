@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :authenticate_user_using_x_auth_token, only: [:destroy]
+
   def create
    user = User.find_by(email: login_params[:email].downcase)
    if user.present? && user.authenticate(login_params[:password])
@@ -8,6 +10,10 @@ class SessionsController < ApplicationController
        notice: t('session.incorrect_credentials')
      }
    end
+  end
+  
+  def destroy
+    @current_user = nil
   end
 
  private
