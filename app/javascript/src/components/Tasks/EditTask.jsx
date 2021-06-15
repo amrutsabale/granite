@@ -21,7 +21,7 @@ const EditTask = ({ history }) => {
     try {
       await tasksApi.update({
         slug,
-        payload: { task: { title, user_id: userId } },
+        payload: { task: { title, user_id: userId, authorize_owner: true } },
       });
       setLoading(false);
       history.push("/");

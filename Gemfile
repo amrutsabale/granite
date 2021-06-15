@@ -55,3 +55,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Add React to Rails
 gem 'react-rails'
+
+# Easy Authorization
+gem "pundit"

@@ -37,3 +37,5 @@ en:
   task:
     slug:
       immutable: "is immutable!"
+  authorization:
+    denied: "Access denied. You are not authorized to perform this action."
