@@ -4,8 +4,9 @@ import { ToastContainer } from "react-toastify";
 import Dashboard from "components/Dashboard";
 import CreateTask from "components/Tasks/CreateTask";
 import { registerIntercepts } from "apis/axios";
-import ShowTask from "./components/Tasks/ShowTask";
-import EditTask from "./components/Tasks/EditTask";
+import ShowTask from "components/Tasks/ShowTask";
+import EditTask from "components/Tasks/EditTask";
+import Signup from "components/Authentication/Signup";
 
 const App = () => {
   useEffect(() => {
@@ -19,6 +20,7 @@ const App = () => {
     <Router>
       <ToastContainer />
       <Switch>
+        <Route exact path="/signup" component={Signup} />
         <Route exact path="/tasks/:slug/edit" component={EditTask} />
         <Route exact path="/tasks/:slug/show" component={ShowTask} />
         <Route exact path="/dashboard" component={Dashboard} />

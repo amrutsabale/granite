@@ -30,7 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  successfully_created: "Task was successfully created!"
+  successfully_created: "%{entity} was successfully created!"
   task:
     slug:
       immutable: "is immutable!"
