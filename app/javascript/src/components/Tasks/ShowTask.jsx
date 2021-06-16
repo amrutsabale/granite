@@ -18,9 +18,9 @@ const ShowTask = () => {
   const [loading, setLoading] = useState(false);
   const [taskId, setTaskId] = useState("");
 
-  const updateTask = () => {
-    history.push(`/tasks/${taskDetails.slug}/edit`);
-  };
+  // const updateTask = () => {
+  //   history.push(`/tasks/${taskDetails.slug}/edit`);
+  // };
 
   const fetchTaskDetails = async () => {
     try {
@@ -30,6 +30,7 @@ const ShowTask = () => {
       setAssignedUser(response.data.assigned_user);
       setTaskCreator(response.data.task_creator);
       setTaskId(response.data.task.id);
+      setComments(response.data.comments);
     } catch (error) {
       logger.error(error);
     } finally {

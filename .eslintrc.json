@@ -25,7 +25,6 @@
     "parser": "babel-eslint",
     "plugins": ["react"],
     "rules": {
-      "no-unused-vars":0,
       "semi": ["error", "always"],
       "no-console": "error",
       "import/prefer-default-export": "off",
