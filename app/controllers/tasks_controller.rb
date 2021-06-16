@@ -4,8 +4,12 @@ class TasksController < ApplicationController
 
   def index
    tasks = policy_scope(Task)
-   pending_tasks = tasks.pending
-   completed_tasks = tasks.completed
+   pending_tasks = tasks.organize(:pending).as_json(include: {
+    user: {
+      only: [:name, :id]
+    }
+    })
+   completed_tasks = tasks.organize(:completed)
    render status: :ok, json: { tasks: { pending: pending_tasks, completed: completed_tasks } }
   end
 
@@ -58,7 +62,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :user_id,:progress,:authorize_owner)
+    params.require(:task).permit(:title, :user_id,:progress,:authorize_owner,:status)
   end
 
   def load_task
