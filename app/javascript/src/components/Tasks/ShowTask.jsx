@@ -4,6 +4,8 @@ import { useParams } from "react-router-dom";
 import Container from "components/Container";
 import PageLoader from "components/PageLoader";
 import tasksApi from "apis/tasks";
+import commentsApi from "apis/comments";
+import Comments from "../Comments";
 
 const ShowTask = () => {
   const { slug } = useParams();
@@ -11,6 +13,10 @@ const ShowTask = () => {
   const [assignedUser, setAssignedUser] = useState([]);
   const [taskCreator, setTaskCreator] = useState("");
   const [pageLoading, setPageLoading] = useState(true);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [taskId, setTaskId] = useState("");
 
   const updateTask = () => {
     history.push(`/tasks/${taskDetails.slug}/edit`);
@@ -23,10 +29,25 @@ const ShowTask = () => {
       setTaskDetails(response.data.task);
       setAssignedUser(response.data.assigned_user);
       setTaskCreator(response.data.task_creator);
+      setTaskId(response.data.task.id);
     } catch (error) {
       logger.error(error);
     } finally {
       setPageLoading(false);
+    }
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      await commentsApi.create({
+        comment: { content: newComment, task_id: taskId },
+      });
+      fetchTaskDetails();
+      setLoading(false);
+    } catch (error) {
+      logger.error(error);
+      setLoading(false);
     }
   };
 
@@ -52,6 +73,12 @@ const ShowTask = () => {
         <span>Created By : </span>
         {taskCreator}
       </h2>
+      <Comments
+        comments={comments}
+        setNewComment={setNewComment}
+        handleSubmit={handleSubmit}
+        loading={loading}
+      />
     </Container>
   );
 };
