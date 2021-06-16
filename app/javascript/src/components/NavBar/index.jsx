@@ -37,16 +37,15 @@ const NavBar = () => {
               />
             </div>
           </div>
-          <div className="flex items-center justify-end gap-x-4">
+
+          <div className="flex items-center justify-end">
             <span
-              className="inline-flex items-center px-2 pt-1 text-sm font-regular leading-5 text-bb-gray-600
+              className="inline-flex items-center px-5 pt-1 text-sm font-regular leading-5 text-bb-gray-600
               text-opacity-50 transition duration-150 ease-in-out border-b-2 border-transparent focus:outline-none
               focus:text-bb-gray-700"
             >
               {userName}
             </span>
-          </div>
-          <div className="flex items-center justify-end">
             <a
               onClick={handleLogout}
               className="inline-flex items-center px-1 pt-1 text-sm
