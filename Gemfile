@@ -58,3 +58,6 @@ gem 'react-rails'
 
 # Easy Authorization
 gem "pundit"
+
+gem 'bundle-audit', '~> 0.1.0'
+gem 'bundler-audit', '~> 0.8.0'
