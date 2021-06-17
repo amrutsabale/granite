@@ -163,6 +163,7 @@ GEM
       execjs
       railties (>= 3.2)
       tilt
+    redis (4.3.1)
     regexp_parser (2.1.1)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
@@ -179,6 +180,10 @@ GEM
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
     semantic_range (3.0.0)
+    sidekiq (6.2.1)
+      connection_pool (>= 2.2.2)
+      rack (~> 2.0)
+      redis (>= 4.2.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -232,6 +237,7 @@ DEPENDENCIES
   react-rails
   sass-rails (>= 6)
   selenium-webdriver
+  sidekiq
   spring
   sqlite3 (~> 1.4)
   tzinfo-data
