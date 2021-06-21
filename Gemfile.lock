@@ -159,6 +159,7 @@ GEM
       railties (>= 3.2)
       tilt
     regexp_parser (2.1.1)
+    rexml (3.2.5)
     rubyzip (2.3.0)
     sass-rails (6.0.0)
       sassc-rails (~> 2.1, >= 2.1.1)
@@ -210,6 +211,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-18
+  x86_64-darwin-20
 
 DEPENDENCIES
   bcrypt (~> 3.1.13)
@@ -223,6 +225,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.3, >= 6.1.3.2)
   react-rails
+  rexml (~> 3.2.4)
   sass-rails (>= 6)
   selenium-webdriver
   spring

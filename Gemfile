@@ -58,3 +58,6 @@ gem 'react-rails'
 
 # Easy Authorization
 gem "pundit"
+
+# Ruby 3 no longer includes the rexml gem by default for unit testing
+gem 'rexml', '~> 3.2.4'
