@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   validates :title, presence: true, length: { maximum: 50 }
   validates :slug, uniqueness: true
   before_create :set_slug
+  after_create :log_task_details
   validate :slug_not_changed
   belongs_to :user
   has_many :comments, dependent: :destroy
@@ -31,6 +32,10 @@ class Task < ApplicationRecord
     starred = send(progress).starred.order('updated_at DESC')
     unstarred = send(progress).unstarred
     starred + unstarred
+  end
+
+  def log_task_details
+    TaskLoggerJob.perform_later(self)
   end
 
 end

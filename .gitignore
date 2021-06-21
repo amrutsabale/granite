@@ -103,3 +103,4 @@ yarn-1.22.5.js
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+test/fixtures
