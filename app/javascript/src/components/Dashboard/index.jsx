@@ -5,11 +5,14 @@ import Container from "components/Container";
 import Table from "components/Tasks/Table";
 import PageLoader from "components/PageLoader";
 import tasksApi from "apis/tasks";
+import DeleteAlert from "components/Tasks/DeleteAlert";
 
 const Dashboard = ({ history }) => {
   const [pendingTasks, setPendingTasks] = useState([]);
   const [completedTasks, setCompletedTasks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [slug, setSlug] = useState("");
 
   const fetchTasks = async () => {
     try {
@@ -31,6 +34,11 @@ const Dashboard = ({ history }) => {
     } catch (error) {
       logger.error(error);
     }
+  };
+
+  const deleteTask = (slug) => {
+    setShowDeleteAlert(true);
+    setSlug(slug);
   };
 
   const showTask = (slug) => {
@@ -61,10 +69,6 @@ const Dashboard = ({ history }) => {
     }
   };
 
-  // const updateTask = (slug) => {
-  //   history.push(`/tasks/${slug}/edit`);
-  // };
-
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -92,7 +96,6 @@ const Dashboard = ({ history }) => {
       {!either(isNil, isEmpty)(pendingTasks) && (
         <Table
           data={pendingTasks}
-          destroyTask={destroyTask}
           showTask={showTask}
           handleProgressToggle={handleProgressToggle}
           starTask={starTask}
@@ -102,8 +105,14 @@ const Dashboard = ({ history }) => {
         <Table
           type="completed"
           data={completedTasks}
-          destroyTask={destroyTask}
+          deleteTask={deleteTask}
           handleProgressToggle={handleProgressToggle}
+        />
+      )}
+      {showDeleteAlert && (
+        <DeleteAlert
+          onClose={() => setShowDeleteAlert(false)}
+          destroyTask={() => destroyTask(slug)}
         />
       )}
     </Container>

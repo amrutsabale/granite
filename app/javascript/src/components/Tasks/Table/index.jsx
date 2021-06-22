@@ -6,7 +6,7 @@ import TableRow from "./TableRow";
 const Table = ({
   type = "pending",
   data,
-  destroyTask,
+  deleteTask,
   showTask,
   handleProgressToggle,
   starTask,
@@ -24,7 +24,7 @@ const Table = ({
                 type={type}
                 handleProgressToggle={handleProgressToggle}
                 starTask={starTask}
-                destroyTask={destroyTask}
+                deleteTask={deleteTask}
               />
             </table>
           </div>
