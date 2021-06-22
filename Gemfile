@@ -65,3 +65,5 @@ gem 'bundler-audit', '~> 0.8.0'
 gem "sidekiq"
 # Ruby 3 no longer includes the rexml gem by default for unit testing
 gem 'rexml', '~> 3.2.4'
+
+gem 'rubocop', '~> 1.17', require: false
