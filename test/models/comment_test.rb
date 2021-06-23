@@ -6,9 +6,8 @@ class CommentTest < ActiveSupport::TestCase
                         email: 'sam@example.com',
                         password: 'welcome',
                         password_confirmation: 'welcome')
-    Task.delete_all
-    @task = Task.new(title: 'This is a test task', user: @user)
-    @comment = @task.comments.new(content: 'Please raise github issue', task_id: @task.id)
+    @task = @user.tasks.new(title: 'This is a test task')
+    @comment = @task.comments.new(content: 'This is a test comment')
     @comment.user = @user
   end
 
