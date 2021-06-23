@@ -6,6 +6,7 @@ import PageLoader from "components/PageLoader";
 import tasksApi from "apis/tasks";
 import commentsApi from "apis/comments";
 import Comments from "../Comments";
+import DeleteAlert from "./DeleteAlert";
 
 const ShowTask = () => {
   const { slug } = useParams();
@@ -17,6 +18,7 @@ const ShowTask = () => {
   const [newComment, setNewComment] = useState("");
   const [loading, setLoading] = useState(false);
   const [taskId, setTaskId] = useState("");
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   let history = useHistory();
 
   const destroyTask = async () => {
@@ -72,42 +74,50 @@ const ShowTask = () => {
   }
 
   return (
-    <Container>
-      <div className="flex justify-between text-bb-gray-600 mt-10">
-        <h1 className="pb-3 mt-5 mb-3 text-lg leading-5 font-bold">
-          {taskDetails?.title}
-        </h1>
-        <div className="bg-bb-env px-2 mt-2 mb-4 rounded">
-          <i
-            className="text-2xl text-center transition duration-300
+    <>
+      <Container>
+        <div className="flex justify-between text-bb-gray-600 mt-10">
+          <h1 className="pb-3 mt-5 mb-3 text-lg leading-5 font-bold">
+            {taskDetails?.title}
+          </h1>
+          <div className="bg-bb-env px-2 mt-2 mb-4 rounded">
+            <i
+              className="text-2xl text-center transition duration-300
              ease-in-out ri-delete-bin-5-line hover:text-bb-red mr-2"
-            onClick={destroyTask}
-          ></i>
-          <i
-            className="text-2xl text-center transition duration-300
+              onClick={() => setShowDeleteAlert(true)}
+            ></i>
+            <i
+              className="text-2xl text-center transition duration-300
              ease-in-out ri-edit-line hover:text-bb-yellow"
-            onClick={updateTask}
-          ></i>
+              onClick={updateTask}
+            ></i>
+          </div>
         </div>
-      </div>
-      <h2
-        className="pb-3 mb-3 text-md leading-5 text-bb-gray-600
+        <h2
+          className="pb-3 mb-3 text-md leading-5 text-bb-gray-600
        text-opacity-50"
-      >
-        <span>Assigned To : </span>
-        {assignedUser?.name}
-      </h2>
-      <h2 className="pb-3 mb-3 text-md leading-5 text-bb-gray-600 text-opacity-50">
-        <span>Created By : </span>
-        {taskCreator}
-      </h2>
-      <Comments
-        comments={comments}
-        setNewComment={setNewComment}
-        handleSubmit={handleSubmit}
-        loading={loading}
-      />
-    </Container>
+        >
+          <span>Assigned To : </span>
+          {assignedUser?.name}
+        </h2>
+        <h2 className="pb-3 mb-3 text-md leading-5 text-bb-gray-600 text-opacity-50">
+          <span>Created By : </span>
+          {taskCreator}
+        </h2>
+        <Comments
+          comments={comments}
+          setNewComment={setNewComment}
+          handleSubmit={handleSubmit}
+          loading={loading}
+        />
+      </Container>
+      {showDeleteAlert && (
+        <DeleteAlert
+          onClose={() => setShowDeleteAlert(false)}
+          destroyTask={destroyTask}
+        />
+      )}
+    </>
   );
 };
 

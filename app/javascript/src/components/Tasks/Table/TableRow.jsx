@@ -5,7 +5,7 @@ import classnames from "classnames";
 const TableRow = ({
   type = "pending",
   data,
-  destroyTask,
+  deleteTask,
   showTask,
   handleProgressToggle,
   starTask,
@@ -76,7 +76,7 @@ const TableRow = ({
                   className="text-2xl text-center text-bb-border
                   transition duration-300 ease-in-out
                   ri-delete-bin-5-line hover:text-bb-red"
-                  onClick={() => destroyTask(rowData.slug)}
+                  onClick={() => deleteTask(rowData.slug)}
                 ></i>
               </td>
             </>
@@ -90,7 +90,7 @@ const TableRow = ({
 TableRow.propTypes = {
   data: PropTypes.array.isRequired,
   type: PropTypes.string,
-  destroyTask: PropTypes.func,
+  deleteTask: PropTypes.func,
   showTask: PropTypes.func,
   handleProgressToggle: PropTypes.func,
 };
