@@ -4,6 +4,7 @@
 # Ignore the default SQLite database.
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/test.sqlite3-*
 
 # Ignore database.yml file
 /config/database.yml
@@ -97,10 +98,3 @@ yarn-debug.log*
 .yarnrc
 yarn-1.22.5.cjs
 yarn-1.22.5.js
-/public/packs
-/public/packs-test
-/node_modules
-/yarn-error.log
-yarn-debug.log*
-.yarn-integrity
-test/fixtures
