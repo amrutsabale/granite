@@ -2,7 +2,10 @@ require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = User.create(name: 'Test', email: 'test@example.com', password: 'welcome', password_confirmation: 'welcome')
+    @user = User.create!(name: 'Sam Smith',
+                         email: 'sam@example.com',
+                         password: 'welcome',
+                         password_confirmation: 'welcome')
   end
 
   def test_valid_email_and_password_should_be_able_to_log_in

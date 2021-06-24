@@ -2,9 +2,11 @@ require 'test_helper'
 
 class TasksControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = User.create(name: 'Test', email: 'test@example.com', password: 'welcome', password_confirmation: 'welcome')
-    post sessions_url, params: { login: { email: @user.email, password: @user.password } }, as: :json
-    @task = @user.tasks.create(title: 'Test task')
+    @user = User.create!(name: 'Sam Smith',
+                         email: 'sam@example.com',
+                         password: 'welcome',
+                         password_confirmation: 'welcome')
+    @task = @user.tasks.create!(title: 'Learn Rails', creator_id: @user.id)
     @headers = headers(@user)
   end
 
@@ -16,7 +18,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
   end
 
   def test_create_a_valid_task
-    post tasks_url, params: { task: { title: 'Test task 1', user_id: @user.id } }, headers: @headers
+    post tasks_url, params: { task: { title: 'Learn Ruby', user_id: @user.id } }, headers: @headers
     assert_response :success
     response_json = response.parsed_body
     assert_equal response_json['notice'], t('successfully_created', entity: 'Task')
@@ -29,14 +31,19 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     assert_equal response_json['errors'], ["Title can't be blank"]
   end
 
+  def test_update_task
+    put "/tasks/#{@task.slug}", params: { task: { title: 'Learn React', user_id: 1, authorize_owner: true } },
+                                headers: @headers
+    response_json = response.parsed_body
+    assert_equal response_json['notice'], 'Successfully updated task.'
+  end
+
   def test_destroy_task
-    # post sessions_url, params: { login: { email: @user.email, password: @user.password } }, as: :json
-    # assert_response :success
-    puts response.parsed_body
-    puts "/tasks/#{@task.slug}"
+    initial_task_count = @user.tasks.size
+
     delete "/tasks/#{@task.slug}", headers: @headers
     response_json = response.parsed_body
-    puts response_json
     assert_equal response_json['notice'], 'Successfully deleted task.'
+    assert_equal @user.tasks.size, initial_task_count - 1
   end
 end
