@@ -1,7 +1,8 @@
-require "test_helper"
+require 'test_helper'
 
 class HomeControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def test_should_get_index
+    get root_url
+    assert_response :success
+  end
 end
