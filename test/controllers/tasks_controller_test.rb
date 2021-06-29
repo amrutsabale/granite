@@ -28,7 +28,7 @@ class TasksControllerTest < ActionDispatch::IntegrationTest
     post tasks_url, params: { task: { title: '', user_id: @user.id } }, headers: @headers
     assert_response :unprocessable_entity
     response_json = response.parsed_body
-    assert_equal response_json['errors'], ["Title can't be blank"]
+    assert_equal response_json['errors'], "Title can't be blank"
   end
 
   def test_update_task
