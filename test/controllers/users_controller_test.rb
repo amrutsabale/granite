@@ -18,6 +18,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
                                       password_confirmation: 'not matching confirmation' } }
 
     assert_response 422
-    assert_equal "Password confirmation doesn't match Password", response.parsed_body['errors']
+    assert_equal "Password confirmation doesn't match Password", response.parsed_body['notice']
   end
 end
