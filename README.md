@@ -1,24 +1,17 @@
-# README
+# Granite
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Running on local
 
-Things you may want to cover:
+```
+bundle install
+bundle exec rails db:migrate
+bundle exec rails server
+```
 
-* Ruby version
+## Heroku Deployed App
 
-* System dependencies
+See here https://granite-tm.herokuapp.com
 
-* Configuration
+## Unit Testing
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+`rake test`
